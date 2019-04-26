@@ -2,7 +2,7 @@ var tools = {
 	/* 获取元素的样式
 	 * @param  obj <DOM Object> 要获取样式的元素对象
 	 * @param  attr <string>  要获取的属性名
-	 * @return  <string>  样式的值
+	 * @return  <string>  样式的值 
 	 */
 	getStyle : function (obj, attr) {
 	// 	if(obj.currentStyle){
