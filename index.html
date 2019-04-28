@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>伟强店铺管理系统--一口气上五楼，三百年好品质，汇仁牌肾宝！</title>
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/edit.css">
+    <script src="libs/jquery/jquery-3.2.1.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libs/tools.js"></script>
+    <!-- 写样式一般用class名，id名一般留给js代码 -->
 </head>
 <body>
     <!-- 导航 -->
@@ -36,10 +41,82 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <!-- 按钮 -->
+    <!-- 按钮、表格 -->
     <div class="container">
-        <button type="button" class="btn btn-primary">商品录入</button>
+        <button type="button" class="btn btn-primary btn-add" data-toggle="modal" data-target="#myModal">商品录入</button>
+        <table class="table table-striped table-bordered table-hover table-list">
+            <thead>
+                <tr class="header">
+                  <th>编号</th>
+                  <th>名称</th>
+                  <th>价格</th>
+                  <th>库存</th>
+                  <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- <tr>
+                  <td>1</td>
+                  <td>鞋子</td>
+                  <td>
+                    <span>20</span>
+                    <input type="text">
+                  </td>
+                  <td>
+                    <span>100</span>
+                    <input type="text">
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-xs btn-edit btn-success">编辑</button>
+                    <button type="button" class="btn btn-xs btn-del btn-danger">删除</button>
+                    <button type="button" class="btn btn-xs btn-ok btn-info">确定</button>
+                    <button type="button" class="btn btn-xs btn-cancel btn-warning">取消</button>
+                  </td>
+                </tr> -->
+            </tbody>
+        </table>
     </div>
+    <!-- Modal(模态层和弹框) -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加商品</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">商品名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputName" placeholder="请输入商品名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPrice" class="col-sm-2 control-label">商品价格</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPrice" placeholder="请输入商品价格">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNum" class="col-sm-2 control-label">商品数量</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputNum" placeholder="请输入商品数量">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="btn-addShop">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="javascript/selectList.js"></script>
+    <script src="javascript/addshop.js"></script>
+    <script src="javascript/editTable.js"></script>
     
 </body>
 </html>

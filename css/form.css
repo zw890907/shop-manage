@@ -1,0 +1,10 @@
+.form-container{
+    width: 500px;
+    margin: 100px auto;
+}
+.form-container h1{
+    line-height: 100px;
+}
+.form-message{
+    margin-left: 20px;
+}

@@ -332,7 +332,7 @@ var tools = {
 	 * @param  query <object>  请求携带的参数
 	 * @param  isJson <boolean>  是否是json格式的数据	
   */
-	ajaxGetPromis : function (url,query,isJson) {
+  ajaxGetPromise : function (url,query,isJson) {
 		isJson = isJson === undefined ? true : isJson;
 		if(query){
 			url += "?";
