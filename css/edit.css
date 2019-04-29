@@ -22,3 +22,7 @@
 .edit input{
     display: inline-block;
 }
+
+.hidden{
+    display: none;
+}

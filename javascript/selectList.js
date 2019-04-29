@@ -16,11 +16,16 @@ class SelectList {
         //将需要传递的参数进行结构赋值
         let {pageIndex,count} = this;
         tools.ajaxGetPromise("api/V1/select.php",{pageIndex,count}).then(data => {
-            //console.log(data.res_body.data);
+            //console.log(data);
             //判断如果查询成功，则使用render方法进行数据库的渲染
             if(data.res_code === 1){
                 //表示成功，调用render方法
                 this.render(data.res_body.data);
+                this.allPage = data.res_body.allPage;
+                //根据总页数来渲染分页和当前处于第几页
+                //pagination.render(this.allPage,this.pageIndex);
+                //可以直接将new SelectList()传过去(引用传递)
+                pagination.render(this);
             }
         })
     }
@@ -30,7 +35,7 @@ class SelectList {
         list.forEach((shop,index) => {
             html += `
                 <tr data-id="${shop.id}">
-                    <td>${index + 1}</td>
+                    <td>${(this.pageIndex - 1)*this.count + index + 1}</td>
                     <td>${shop.name}</td>
                     <td>
                         <span>${shop.price}</span>

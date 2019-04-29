@@ -2,6 +2,12 @@
     include("./config.php");
     $pageIndex = $_GET['pageIndex'];
     $count = $_GET['count'];
+    //计算总页数
+    $allSql = "select * from shop";
+    $allRes = mysql_query($allSql);
+    //先计算出总条数
+    $allCount = mysql_num_rows($allRes);
+    $allPage = ceil($allCount / $count);
     //查询的时候根据pageIndex和count进行判断limit跳过的数据量
     /*pageIndex=1 limit(0,5)
     pageIndex=2 limit(5,5)
@@ -22,7 +28,8 @@
         "res_code" => 1,
         "res_message" => "查询成功",
         "res_body" => array(
-            "data" => $shop
+            "data" => $shop,
+            "allPage" => $allPage
         )
     );
     echo json_encode($json);

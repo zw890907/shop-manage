@@ -107,5 +107,129 @@
 
   }
 
+##### 注册接口
+
+* url : api/V1/register.php
+
+* method : post
+
+* query : {username,password}
+
+* data : {
+
+  ​	res_code : 1, // 1代表成功，0代表失败,
+
+  ​	res_message : "注册成功" || "网络错误，注册失败，请重试"
+
+  }
+
+##### 登录接口
+
+- url : api/V1/login.php
+
+- method : post
+
+- query : {username,password}
+
+- data : {
+
+  ​	res_code : 1, // 1代表成功，0代表失败,
+
+  ​	res_message : "登录成功" || "用户名或密码错误"
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
