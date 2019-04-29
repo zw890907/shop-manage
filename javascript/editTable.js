@@ -40,20 +40,49 @@ class EditTable {
         //console.log(tr);
     }
     btnOkClick (tr) {
-        //???考虑后台数据的修改
-        //找到所有的span(集合），并将修改的值赋给span
-        let aSpan = Array.from(tr.querySelectorAll("span"));
-        aSpan.forEach(span => {
-            span.innerHTML = span.nextElementSibling.value;
+        //点击确定后，先将数据传给后台进行修改(与后台商量接口)
+        let inputPrice = tr.querySelector(".inputPrice"),
+            inputNum = tr.querySelector(".inputNum"),
+            id = tr.getAttribute("data-id");
+        let price = inputPrice.value,
+            num = inputNum.value;
+        tools.ajaxGetPromise("api/V1/update.php",{id,price,num}).then(data => {
+            //console.log(data);
+            if(data.res_code === 1){
+                alert(data.res_message);
+                inputPrice.previousElementSibling.innerHTML = inputPrice.value;
+                inputNum.previousElementSibling.innerHTML = inputNum.value;
+                //给tr增加class名
+                tr.classList.remove("edit");
+            }else{
+                alert(data.res_message);
+            }
         })
-        //给tr增加class名
-        tr.classList.remove("edit");
+        
+        //找到所有的span(集合），并将修改的值赋给span
+        // let aSpan = Array.from(tr.querySelectorAll("span"));
+        // aSpan.forEach(span => {
+        //     span.innerHTML = span.nextElementSibling.value;
+        // })
+        
     }
     btnDelClick (tr) {
-        //???考虑后台数据的删除
-        //移除当前tr
+        //后台数据应该先删除，然后在渲染到页面
         if(confirm("确定删除吗？")){
-            tr.remove();
+            //先找到当前tr的id
+            let id = tr.getAttribute("data-id");
+            tools.ajaxGetPromise("api/V1/delete.php",{id}).then(data => {
+                //console.log(data);
+                if(data.res_code === 1){
+                    alert(data.res_message);
+                    //移除当前tr
+                    //tr.remove();
+                    //后台数据操作完成，前端重新获取
+                    getShop.init();
+                }else{
+                    alert(data.res_message); 
+                }
+            })
         }
     }
     btnCancelClick (tr) {

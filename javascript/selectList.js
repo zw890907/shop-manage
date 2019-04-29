@@ -1,10 +1,21 @@
 class SelectList {
     constructor (tbody) {
         this.tbody = document.querySelector(tbody);
+        //默认当前页码为1
+        this.pageIndex = 1;
+        //count指一页的数量（value=4），并且不能被修改
+        Object.defineProperty(this,"count",{
+            writable : false,
+            value : 5
+        });
+        //默认总页码也为1（临时赋值）
+        this.allPage = 1;
         this.init();
     }
     init () {
-        tools.ajaxGetPromise("api/V1/select.php").then(data => {
+        //将需要传递的参数进行结构赋值
+        let {pageIndex,count} = this;
+        tools.ajaxGetPromise("api/V1/select.php",{pageIndex,count}).then(data => {
             //console.log(data.res_body.data);
             //判断如果查询成功，则使用render方法进行数据库的渲染
             if(data.res_code === 1){
@@ -16,18 +27,18 @@ class SelectList {
     render (list) {
         //进行渲染
         let html = "";
-        list.forEach(shop => {
+        list.forEach((shop,index) => {
             html += `
-                <tr>
-                    <td>${shop.id}</td>
+                <tr data-id="${shop.id}">
+                    <td>${index + 1}</td>
                     <td>${shop.name}</td>
                     <td>
                         <span>${shop.price}</span>
-                        <input type="text">
+                        <input type="text" class="inputPrice">
                     </td>
                     <td>
                         <span>${shop.num}</span>
-                        <input type="text">
+                        <input type="text" class="inputNum">
                     </td>
                     <td>
                         <button type="button" class="btn btn-xs btn-edit btn-success">编辑</button>
@@ -41,4 +52,4 @@ class SelectList {
         this.tbody.innerHTML = html;
     }
 }
-new SelectList ("#tbody");
+let getShop = new SelectList ("#tbody");

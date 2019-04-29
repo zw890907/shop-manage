@@ -15,7 +15,7 @@ class AddShop {
             //先验证表单是否为空
             if(name === "" || price === "" || num === ""){
                 alert("输入不能为空!");
-                return;//终止
+                return;//终止后面代码不执行
             }
             tools.ajaxGetPromise("api/V1/insert.php",{name,price,num}).then(data => {
                 //console.log(data);
@@ -26,7 +26,9 @@ class AddShop {
                     //将上一次的添加记录删除
                     this.inputName.value = this.inputPrice.value = this.inputNum.value = "";
                     //让模态层隐藏
-                    
+                    $('#myModal').modal('hide');
+                    //重新渲染页面(调用查询方法)
+                    getShop.init();
                 }
             })
         }

@@ -75,9 +75,37 @@
 
   }
 
+##### 删除商品接口
 
+* url : api/v1/delete.php
 
+* method : get
 
+* query : {id}
+
+* data : {
+
+  ​	res_code : 1, // 1代表成功，0代表失败,
+
+  ​	res_message : "删除成功" || "网络错误，删除失败，请重试"
+
+  }
+
+##### 编辑商品确定接口
+
+* url : api/V1/update.php
+
+* method : get
+
+* query : {id,price,num}
+
+* data : {
+
+  ​	res_code : 1, // 1代表成功，0代表失败,
+
+  ​	res_message : "更新成功" || "网络错误，更新失败，请重试"
+
+  }
 
 
 

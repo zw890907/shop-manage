@@ -75,6 +75,26 @@
                 </tr> -->
             </tbody>
         </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <li>
+                <a href="javascript:;" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <!-- 根据数据库中的数据得知总页数和当前在哪页 -->
+              <!-- <li><a href="javascript:;">1</a></li>
+              <li><a href="javascript:;">2</a></li>
+              <li><a href="javascript:;">3</a></li>
+              <li><a href="javascript:;">4</a></li>
+              <li><a href="javascript:;">5</a></li> -->
+              <li>
+                <a href="javascript:;" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+        </nav>
     </div>
     <!-- Modal(模态层和弹框) -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -113,10 +133,11 @@
             </div>
         </div>
     </div>
+    
 
     <script src="javascript/selectList.js"></script>
-    <script src="javascript/addshop.js"></script>
-    <script src="javascript/editTable.js"></script>
     
+    <script src="javascript/editTable.js"></script>
+    <script src="javascript/addshop.js"></script>
 </body>
 </html>
